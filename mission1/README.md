@@ -346,3 +346,4 @@ $ git config --list
 * **문제 발생**: Docker 이미지가 성공적으로 빌드되고 컨테이너가 실행되었으나, `curl http://localhost:8080` 수행 시 빈 화면(줄바꿈)만 출력됨.
 * **원인 가설**: 이미 `src` 디렉터리 내부로 진입한 상태에서 `echo ... > src/index.html`을 실행하여 `src/src/index.html` 경로로 파일이 들어가거나, 상위 디렉터리 경로 오차로 빈 `src` 폴더가 빌드 컨텍스트로 전달되어 COPY 되었을 것이다.
 * **해결 방법**: 터미널 프롬프트 상의 현재 위치(`pwd`)를 명확히 확인한 후, 프로젝트 루트 디렉터리(`my-project`)로 이동하여 정상 위치에 `src/index.html`을 생성하고 `docker build -t my-custom-app:1.0 .`으로 이미지 재빌드 후 컨테이너 재시작하여 해결함.
+
