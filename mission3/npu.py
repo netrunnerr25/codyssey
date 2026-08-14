@@ -4,7 +4,7 @@ import math
 from typing import List, Tuple, Dict, Any
 
 # ----------------------------------------------------
-# 1. 상수 및 라벨 정규화 맵 (평가항목 #12, #16 보완)
+# 1. 상수 및 라벨 정규화 맵 
 # ----------------------------------------------------
 # 부동소수점 허용 오차: IEEE 754 float64 연산 단올림 오차 및 25x25(625회) 누적 오차를 고려하여 1e-9 선택
 EPSILON = 1e-9  
@@ -32,7 +32,7 @@ def normalize_label(label: str) -> str:
 
 
 # ----------------------------------------------------
-# 2. MAC 연산 및 유사성 수학적 근거 (평가항목 #10, #14 보완)
+# 2. MAC 연산 및 유사성 수학적 근거 
 # ----------------------------------------------------
 def mac_operation(pattern: List[List[float]], filter_matrix: List[List[float]]) -> float:
     """
@@ -86,7 +86,7 @@ def classify_pattern(score_cross: float, score_x: float) -> str:
 
 
 # ----------------------------------------------------
-# 3. 모드 1: 대화형 콘솔 입력 (평가항목 #1, #2, #3 보완)
+# 3. 모드 1: 대화형 콘솔 입력 
 # ----------------------------------------------------
 def get_matrix_input(name: str, size: int = 3) -> List[List[float]]:
     """
@@ -159,7 +159,7 @@ def run_mode_1():
 
 
 # ----------------------------------------------------
-# 4. 모드 2: JSON 자동 배치 분석 (평가항목 #4, #6, #8, #11 보완)
+# 4. 모드 2: JSON 자동 배치 분석 
 # ----------------------------------------------------
 def run_mode_2(filepath: str = "data.json"):
     print("\n==========================================")
@@ -191,7 +191,7 @@ def run_mode_2(filepath: str = "data.json"):
     for pattern_key, item in patterns_data.items():
         total_cnt += 1
         try:
-            # 패턴 키 파싱 예외 처리 (평가항목 #11 보완)
+            # 패턴 키 파싱 예외 처리
             key_parts = pattern_key.split('_')
             if len(key_parts) < 2 or not key_parts[1].isdigit():
                 msg = f"패턴 키 규격 오류 ('size_N_idx' 형식 필요, 입력: {pattern_key})"
@@ -276,7 +276,7 @@ def run_mode_2(filepath: str = "data.json"):
             fail_cnt += 1
             print(f"{pattern_key:<15} | {'-':<10} | {'-':<10} | {'ERROR':<10} | {'-':<8} | FAIL ({err})")
 
-    # 결과 리포트 상세 요약 (평가항목 #6, #8 보완)
+    # 결과 리포트 상세 요약 
     print("\n================ [최종 리포트 요약] ================")
     print(f"전체 테스트 : {total_cnt}건 | 통과 : {pass_cnt}건 | 실패 : {fail_cnt}건 | 판정불가(UNDECIDED) : {undecided_cnt}건")
     
