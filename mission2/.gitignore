@@ -1,19 +1,19 @@
-# Python cache files
+#Python cache files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Environments
+#Environments
 .venv/
 env/
 venv/
 ENV/
 
-# IDE / Editor
+#IDE / Editor
 .vscode/
 .idea/
 *.swp
 
-# OS generated
+#OS generated
 .DS_Store
 Thumbs.db
