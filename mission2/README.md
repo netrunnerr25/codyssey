@@ -56,5 +56,19 @@
 터미널에서 프로젝트 루트 디렉터리로 이동한 후 다음 명령어를 실행합니다.
 ```bash
 python main.py
+```
 
 - Clone & Pull 실습 완료
+
+- git log 커밋 이력 및 그래프 스크린샷
+```
+git log --oneline --graph --all
+```
+![alt text](image.png)
+
+- 깃허브 스크린샷 커밋 수 확인
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+- 게임 정상 작동 인증
+![alt text](image-3.png)
