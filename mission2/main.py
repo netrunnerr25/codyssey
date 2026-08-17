@@ -3,6 +3,11 @@ import os
 from quiz import Quiz
 
 
+# main.py 파일이 위치한 디렉터리를 기준 절대 경로 설정 (실행 위치 영향 방지)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(BASE_DIR, "state.json")
+
+
 class QuizGame:
     """퀴즈 게임의 흐름과 데이터 입출력을 관리하는 클래스"""
 
