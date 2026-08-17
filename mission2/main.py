@@ -10,38 +10,28 @@ class QuizGame:
 
     DEFAULT_QUIZZES = [
         {
-            "question": "Python의 창시자는 누구일까요?",
-            "choices": [
-                "Guido van Rossum",
-                "Linus Torvalds",
-                "Bjarne Stroustrup",
-                "James Gosling",
-            ],
+            "question": "명대사: \"I am Iron Man. (내가 아이언맨이다.)\"\n이 명대사가 나온 마블 영화 시리즈의 첫 번째 영화는?",
+            "choices": ["아이언맨", "어벤져스", "캡틴 아메리카", "토르"],
             "answer": 1,
         },
         {
-            "question": "다음 중 Python의 가변(Mutable) 자료형은 무엇일까요?",
-            "choices": ["tuple", "str", "list", "int"],
-            "answer": 3,
+            "question": "명대사: \"우린 답을 찾을 것이다. 늘 그랬듯이.\"\n우주와 워몰을 다룬 크리스토퍼 놀란 감독의 SF 영화는?",
+            "choices": ["인터스텔라", "인셉션", "마션", "아바타"],
+            "answer": 1,
         },
         {
-            "question": "Python에서 리스트에 요소를 추가하는 메서드는 무엇일까요?",
-            "choices": ["push()", "append()", "add()", "insert_last()"],
-            "answer": 2,
+            "question": "명대사: \"You shall not pass! (너는 통과하지 못한다!)\"\n마법사 간달프가 다리 위에서 외친 판타지 영화는?",
+            "choices": ["반지의 제왕", "해리 포터", "나니아 연대기", "호빗"],
+            "answer": 1,
         },
         {
-            "question": "Python에서 조건문에 사용하는 키워드가 아닌 것은 무엇일까요?",
-            "choices": ["if", "elif", "else", "switch"],
-            "answer": 4,
+            "question": "명대사: \"May the Force be with you. (포스가 함께하기를.)\"\n이 유명한 명대사가 나오는 SF 대작 시리즈는?",
+            "choices": ["스타워즈", "스타트렉", "가디언즈 오브 갤럭시", "트랜스포머"],
+            "answer": 1,
         },
         {
-            "question": "Python에서 예외 처리를 위해 사용하는 블록 키워드 조합은 무엇일까요?",
-            "choices": [
-                "try / except",
-                "try / catch",
-                "begin / rescue",
-                "do / catch",
-            ],
+            "question": "명대사: \"I'll be back. (나중에 다시 돌아오겠다.)\"\n아놀드 슈왈제네거가 용광로로 들어가며 남긴 명대사가 나온 영화는?",
+            "choices": ["터미네이터 2", "매트릭스", "미션 임파서블", "다이하드"],
             "answer": 1,
         },
     ]
