@@ -108,14 +108,11 @@ node --check js/main.js
 ## 제출 기록
 
 - GitHub 저장소 URL: https://github.com/netrunnerr25/codyssey (과제 폴더: `mission_B1-1`)
-- 배포 URL: **배포 후 여기에 입력**
+- 배포 URL: https://netrunnerr25.github.io/codyssey/mission_B1-1/
 - 데스크톱 스크린샷: [desktop.png](screenshots/desktop.png)
 - 모바일 스크린샷: [mobile.png](screenshots/mobile.png)
 - 다크 모드 스크린샷: [dark-mode.png](screenshots/dark-mode.png)
 
-현재 스크린샷은 Hero 코드 카드 삭제 전의 로컬 화면입니다. 최종 제출 전에 최신 화면으로 다시 촬영해야 합니다. GitHub Pages 배포 화면은 아닙니다.
-
-촬영 방법은 [screenshots/README.md](screenshots/README.md)를 참고하세요.
 
 ## 학습 개념 설명
 
