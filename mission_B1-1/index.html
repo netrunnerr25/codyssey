@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="작은 아이디어를 믿음직한 서비스로 연결하는 신입 백엔드 개발자 윤수현의 포트폴리오">
+  <meta name="color-scheme" content="light dark">
+  <title>윤수현 · Backend Developer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header" id="top">
+    <nav class="container navigation" aria-label="주요 메뉴">
+      <a class="brand" href="#hero" aria-label="윤수현 포트폴리오 홈">suhyeon yun</a>
+      <div class="nav-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span id="theme-icon" aria-hidden="true">☾</span></button>
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="메뉴 열기" aria-controls="nav-menu" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero container" id="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">안녕하세요!</p>
+        <h1 id="hero-title">백엔드 개발자<br><span>윤수현입니다.</span></h1>
+        <p class="hero-description">Python을 중심으로 API와 데이터베이스를 공부하는 신입 백엔드 개발자입니다. 읽기 쉬운 코드와 안정적인 서비스를 만들고자 합니다.</p>
+        <div class="button-group"><a class="button primary" href="#projects">프로젝트 보기 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#contact">연락하기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container reveal">
+        <p class="section-kicker">ABOUT ME</p><h2 id="about-title">소개<span class="accent"></span></h2>
+        <div class="about-layout">
+          <figure class="profile-card"><img src="images/profile.jpg" alt="프로필 이미지" width="320" height="280"><figcaption>윤수현 <span>Backend Developer</span></figcaption></figure>
+          <div class="about-copy"><p>Python 기반의 백엔드 개발을 공부하고 있습니다. API 설계와 데이터 저장·조회 과정에 관심이 있습니다.</p><p>프로젝트를 통해 문제를 해결하고, 코드와 개발 과정을 기록하며 기본기를 쌓고 있습니다.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section container reveal" id="skills" aria-labelledby="skills-title">
+      <p class="section-kicker">SKILLS</p><h2 id="skills-title">기술<span class="accent"></span></h2>
+      <div class="skills-grid">
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">&lt;/&gt;</span><h3>Backend</h3><ul class="tags"><li>Python</li><li>Django</li><li>FastAPI</li><li>REST API</li></ul></article>
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">▤</span><h3>Database</h3><ul class="tags"><li>PostgreSQL</li><li>MySQL</li><li>pgvector</li><li>Redis</li></ul></article>
+        <article class="skill-card"><span class="skill-symbol" aria-hidden="true">⌘</span><h3>Infra &amp; Tools</h3><ul class="tags"><li>AWS S3</li><li>Docker</li><li>Git</li><li>Jira</li></ul></article>
+      </div>
+    </section>
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title"><div class="container reveal">
+      <div class="section-heading"><div><p class="section-kicker">PROJECTS</p><h2 id="projects-title">프로젝트<span class="accent"></span></h2></div><a class="text-link" href="https://github.com/netrunnerr25" target="_blank" rel="noopener noreferrer">GitHub 방문 <span aria-hidden="true">↗</span></a></div>
+      <p id="projects-status" class="projects-status" role="status" aria-live="polite">프로젝트를 불러오는 중입니다…</p>
+      <div id="projects-grid" class="projects-grid" aria-busy="true"></div>
+      <button id="retry-projects" class="button secondary" type="button" hidden>다시 시도</button>
+      <noscript><p>프로젝트를 보려면 JavaScript를 켜거나 위 GitHub 링크를 방문해주세요.</p></noscript>
+    </div></section>
+    <section class="section container reveal" id="contact" aria-labelledby="contact-title">
+      <p class="section-kicker">CONTACT</p><h2 id="contact-title">연락하기<span class="accent"></span></h2>
+      <div class="contact-layout">
+        <form id="contact-form" novalidate>
+          <div class="form-field"><label for="name">이름 <span>(필수)</span></label><input id="name" name="name" type="text" autocomplete="name" required aria-invalid="false" aria-describedby="name-error" placeholder="이름을 입력해주세요"><p class="field-error" id="name-error" aria-live="polite"></p></div>
+          <div class="form-field"><label for="email">이메일 <span>(필수)</span></label><input id="email" name="email" type="email" autocomplete="email" required aria-invalid="false" aria-describedby="email-error" placeholder="hello@example.com"><p class="field-error" id="email-error" aria-live="polite"></p></div>
+          <div class="form-field"><label for="message">메시지 <span>(필수)</span></label><textarea id="message" name="message" rows="5" required aria-invalid="false" aria-describedby="message-error" placeholder="메시지를 입력해주세요."></textarea><p class="field-error" id="message-error" aria-live="polite"></p></div>
+          <button class="button primary submit-button" type="submit">메시지 작성 완료 <span aria-hidden="true">↗</span></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-content"><a class="brand" href="#hero"> suhyeon yun</a><p>© <span id="year">2026</span> suhyeon yun</p><nav aria-label="소셜 링크"><a class="text-link" href="https://github.com/netrunnerr25" target="_blank" rel="noopener noreferrer" aria-label="윤수현 GitHub (새 탭)">GitHub ↗</a></nav></div></footer>
+  <button id="back-to-top" class="icon-button back-to-top" type="button" aria-label="맨 위로 이동" hidden>↑</button>
+</body>
