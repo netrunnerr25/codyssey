@@ -1,0 +1,9 @@
+.local/
+.venv/
+__pycache__/
+*.pyc
+.env
+*.pem
+*.key
+*.tfstate*
+crash.log
