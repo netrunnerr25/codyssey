@@ -1,0 +1,119 @@
+{
+  "user_arn": "arn:aws:iam::837497586868:user/mission-b3",
+  "policy_name": "CodysseyMissionB3Seoul",
+  "policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "ReadOnlyLabDiscoveryInSeoul",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeImages",
+          "ec2:DescribeInstanceTypes",
+          "ec2:DescribeInstances",
+          "ec2:DescribeVpcs",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeRouteTables",
+          "ec2:DescribeInternetGateways",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeKeyPairs",
+          "ec2:DescribeVolumes",
+          "ec2:DescribeAddresses",
+          "ec2:DescribeInstanceStatus"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "aws:RequestedRegion": "ap-northeast-2"
+          }
+        }
+      },
+      {
+        "Sid": "CreateAndConnectLabResourcesInSeoul",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:CreateVpc",
+          "ec2:CreateSubnet",
+          "ec2:CreateInternetGateway",
+          "ec2:AttachInternetGateway",
+          "ec2:CreateRouteTable",
+          "ec2:CreateRoute",
+          "ec2:AssociateRouteTable",
+          "ec2:CreateSecurityGroup",
+          "ec2:AuthorizeSecurityGroupIngress",
+          "ec2:ImportKeyPair",
+          "ec2:RunInstances"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "aws:RequestedRegion": "ap-northeast-2"
+          }
+        }
+      },
+      {
+        "Sid": "TagOnlyDuringCreation",
+        "Effect": "Allow",
+        "Action": "ec2:CreateTags",
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "aws:RequestedRegion": "ap-northeast-2",
+            "ec2:CreateAction": [
+              "CreateVpc",
+              "CreateSubnet",
+              "CreateInternetGateway",
+              "CreateRouteTable",
+              "CreateSecurityGroup",
+              "ImportKeyPair",
+              "RunInstances"
+            ]
+          }
+        }
+      },
+      {
+        "Sid": "RemoveOnlyMissionResourcesInSeoul",
+        "Effect": "Allow",
+        "Action": [
+          "ec2:TerminateInstances",
+          "ec2:DeleteVolume",
+          "ec2:DeleteSecurityGroup",
+          "ec2:DisassociateRouteTable",
+          "ec2:DeleteRouteTable",
+          "ec2:DeleteSubnet",
+          "ec2:DetachInternetGateway",
+          "ec2:DeleteInternetGateway",
+          "ec2:DeleteVpc",
+          "ec2:DeleteKeyPair"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "aws:RequestedRegion": "ap-northeast-2",
+            "ec2:ResourceTag/Project": "mission_B3-1"
+          }
+        }
+      },
+      {
+        "Sid": "DenyOtherInstanceSizes",
+        "Effect": "Deny",
+        "Action": "ec2:RunInstances",
+        "Resource": "arn:aws:ec2:ap-northeast-2:*:instance/*",
+        "Condition": {
+          "StringNotEquals": {
+            "ec2:InstanceType": "t3.micro"
+          }
+        }
+      }
+    ]
+  },
+  "purpose": "Dedicated lab API user; no AdministratorAccess, no instance profile",
+  "attached_managed_policies": [],
+  "groups": [],
+  "inline_policy_names": [
+    "CodysseyMissionB3Seoul"
+  ],
+  "bootstrap_note": "Root temporary session used only for initial IAM provisioning and IAM credential cleanup; all lab infrastructure operations used mission-b3",
+  "temporary_access_key_deleted": true,
+  "remaining_access_keys": 0
+}

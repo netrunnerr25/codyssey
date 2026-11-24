@@ -1,0 +1,82 @@
+{
+  "url": "http://3.39.242.203/health",
+  "status": 200,
+  "body": "OK\n",
+  "checked_at": "2026-11-24T08:28:16.261110+00:00",
+  "region": "ap-northeast-2",
+  "ssh_cidr": "121.135.181.35/32",
+  "sg_inbound": [
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 80,
+      "ToPort": 80,
+      "UserIdGroupPairs": [],
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0"
+        }
+      ],
+      "Ipv6Ranges": [],
+      "PrefixListIds": []
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 22,
+      "ToPort": 22,
+      "UserIdGroupPairs": [],
+      "IpRanges": [
+        {
+          "CidrIp": "121.135.181.35/32"
+        }
+      ],
+      "Ipv6Ranges": [],
+      "PrefixListIds": []
+    }
+  ],
+  "routes": {
+    "Associations": [
+      {
+        "Main": false,
+        "RouteTableAssociationId": "rtbassoc-0f93e2b371b7aedbc",
+        "RouteTableId": "rtb-0ca53e01e313663a6",
+        "SubnetId": "subnet-0b2af1c0b44b0a791",
+        "AssociationState": {
+          "State": "associated"
+        }
+      }
+    ],
+    "PropagatingVgws": [],
+    "RouteTableId": "rtb-0ca53e01e313663a6",
+    "Routes": [
+      {
+        "DestinationCidrBlock": "10.30.0.0/16",
+        "GatewayId": "local",
+        "Origin": "CreateRouteTable",
+        "State": "active"
+      },
+      {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": "igw-0ec889f975662ccb8",
+        "Origin": "CreateRoute",
+        "State": "active"
+      }
+    ],
+    "Tags": [
+      {
+        "Key": "Name",
+        "Value": "mission_B3-1-573ec6ec7965"
+      },
+      {
+        "Key": "Project",
+        "Value": "mission_B3-1"
+      },
+      {
+        "Key": "LabRun",
+        "Value": "573ec6ec7965"
+      }
+    ],
+    "VpcId": "vpc-0b3f1a63690683b98",
+    "OwnerId": "837497586868"
+  },
+  "ssh_checks": "active\nOK\nHTTP/2 200 \ndate: Tue, 24 Nov 2026 08:28:16 GMT\ncontent-type: text/html; charset=utf-8\nserver: cloudflare\nlast-modified: Thu, 19 Nov 2026 22:11:52 GMT\nallow: GET, HEAD\naccept-ranges: bytes\nage: 9204\ncf-cache-status: HIT\ncf-ray: a5f70a08e9bc3f17-ICN\nalt-svc: h3=\":443\"; ma=86400\n\n45.198.224.76 - - [24/Nov/2026:08:28:13 +0000] \"GET / HTTP/1.1\" 200 896 \"-\" \"-\" \"-\"\n127.0.0.1 - - [24/Nov/2026:08:28:16 +0000] \"GET / HTTP/1.1\" 200 6891 \"-\" \"curl/8.21.0\" \"-\"\n127.0.0.1 - - [24/Nov/2026:08:28:16 +0000] \"GET /health HTTP/1.1\" 200 3 \"-\" \"curl/8.21.0\" \"-\"\n"
+}

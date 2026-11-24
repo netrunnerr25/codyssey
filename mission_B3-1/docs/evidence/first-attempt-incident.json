@@ -1,0 +1,11 @@
+{
+  "run": "6f0f1619f8f9",
+  "symptom": "EC2 created but instance_status_ok waiter failed with UnauthorizedOperation",
+  "api": "ec2:DescribeInstanceStatus",
+  "observed_error": "User mission-b3 is not authorized to perform ec2:DescribeInstanceStatus because no identity-based policy allows the action",
+  "cause": "Waiter makes an additional DescribeInstanceStatus API call absent from the first IAM policy",
+  "resolution": "Added only ec2:DescribeInstanceStatus to the Seoul read-only statement",
+  "cleanup_evidence": "first-attempt-cleanup.json",
+  "regression_test": "test_policy_covers_ec2_waiter_read_operations",
+  "note": "Summary transcribed from the actual failed deployment output; not an unmodified AWS API response"
+}

@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-24T08:30:25.039468+00:00",
+  "scope": "Project=mission_B3-1 in ap-northeast-2; both attempts",
+  "remaining_counts": {
+    "non_terminated_ec2": 0,
+    "ebs": 0,
+    "vpc": 0,
+    "subnet": 0,
+    "internet_gateway": 0,
+    "route_table": 0,
+    "security_group": 0,
+    "elastic_ip": 0,
+    "key_pair": 0
+  }
+}

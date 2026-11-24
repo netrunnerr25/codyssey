@@ -1,0 +1,28 @@
+{
+  "run": "6f0f1619f8f9",
+  "started_at": "2026-11-24T08:00:30.508016+00:00",
+  "actions": [
+    "terminate_instances",
+    "delete_volume",
+    "delete_security_group",
+    "disassociate_route_table",
+    "delete_route_table",
+    "delete_subnet",
+    "detach_internet_gateway",
+    "delete_internet_gateway",
+    "delete_vpc",
+    "delete_key_pair"
+  ],
+  "finished_at": "2026-11-24T08:01:06.330538+00:00",
+  "remaining": {
+    "EC2": [],
+    "EBS": [],
+    "Elastic IP": [],
+    "Internet Gateway": [],
+    "VPC": [],
+    "Subnet": [],
+    "Route Table": [],
+    "Security Group": [],
+    "Key Pair": []
+  }
+}

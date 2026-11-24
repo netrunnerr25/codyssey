@@ -230,6 +230,10 @@ def verify(args):
         if response.status != 200 or page.locator('body').inner_text().strip() != 'OK':
             raise RuntimeError('Browser health verification failed')
         page.screenshot(path=str(path / 'external-health.png'), full_page=True)
+        homepage = page.goto('http://' + state['ip'] + '/', wait_until='networkidle', timeout=20000)
+        if homepage.status != 200:
+            raise RuntimeError('Deployed website did not return HTTP 200')
+        page.screenshot(path=str(path / 'external-website.png'), full_page=True)
         browser.close()
     readme = ROOT / 'README.md'
     text = readme.read_text()

@@ -4,28 +4,35 @@ AWS 서울 리전(ap-northeast-2)에 독립 VPC, Public Subnet, Internet Gateway
 Route Table, Security Group, EC2 한 대를 구성하고 기존 `mission_B1-1` 웹사이트를 Nginx로 배포합니다.
 보너스 과제인 HTTPS·Docker는 포함하지 않습니다.
 
-**현재 상태: 구현 및 로컬 검증 완료, AWS 실행 대기.** AWS IAM 설정과 계정의 프리 티어 확인이 필요합니다.
-실제 AWS 배포·외부 접속·장애 재현·리소스 삭제를 완료한 것으로 제출하면 안 됩니다.
+**현재 상태: 실제 AWS 배포·외부 접속·장애 복구·실습 리소스 삭제 확인 완료.**
+서울 리전에서 전용 IAM 사용자 `mission-b3`로 실행했습니다. 기존 계정은 유료 플랜으로 전환했으며,
+계정 소유자가 확인한 유효 크레딧을 활용하는 실습입니다. 무료 계정 플랜으로 실행한 것은 아닙니다.
+최종 크레딧 적용/청구액은 Billing의 지연 반영 내역에서 별도로 확인해야 합니다.
+과제의 “프리 티어 범위” 조건을 무료 계정 플랜 가입으로 엄격히 해석하는 교육 과정이라면 이 계정 조건을 담당자에게 확인해야 합니다.
 
 ## 외부 접속 증빙
 
 <!-- live-result:start -->
-검증 방식: **B — GET http://<퍼블릭IP>/health**.
+검증 방식: **B — GET /health**
 
-실제 URL: 미발급. 실제 외부 접속 결과 및 스크린샷: 미생성.
-`verify` 명령이 실제 HTTP 200과 `OK`를 확인하고 Chromium에서 해당 URL을 직접 열어 캡처한 후
-이 영역에 실제 URL·검증 시각·증빙 링크를 기록합니다.
+URL: `http://3.39.242.203/health`
+
+검증 시각(UTC): `2026-11-24T08:28:16.261110+00:00`
+
+HTTP **200**, 응답 `OK` 확인. [실제 브라우저 캡처](docs/evidence/external-health.png), [검증 로그](docs/evidence/verification.json).
+
+실습 종료 후 cleanup을 실행하면 해당 URL은 더 이상 서비스하지 않습니다.
 <!-- live-result:end -->
 
 ## 제출 파일
 
 | 요구 결과물 | 경로 | 현황 |
 |---|---|---|
-| 아키텍처 PNG | [docs/architecture.png](docs/architecture.png) | 설계도 작성 완료 |
-| 외부 접속 URL·스크린샷 | 위 증빙 영역, docs/evidence/external-health.png | AWS 실행 후 생성 |
-| 트러블슈팅 보고서 | [docs/troubleshooting.md](docs/troubleshooting.md) | 실제 재현 후 자동 교체 |
-| 리소스 정리 체크리스트 | [docs/cleanup-checklist.md](docs/cleanup-checklist.md) | 삭제 API/재조회 후 자동 교체 |
-| IAM 권한·설정 | [iam/README.md](iam/README.md), [정책](iam/mission-policy.json) | 준비 완료, 연결 필요 |
+| 아키텍처 PNG | [docs/architecture.png](docs/architecture.png) | 실제 배포 구성 반영 완료 |
+| 외부 접속 URL·스크린샷 | 위 증빙 영역, docs/evidence/external-health.png | 실제 HTTP 200 확인 및 캡처 완료 |
+| 트러블슈팅 보고서 | [docs/troubleshooting.md](docs/troubleshooting.md) | 실제 장애 재현/복구 기록 완료 |
+| 리소스 정리 체크리스트 | [docs/cleanup-checklist.md](docs/cleanup-checklist.md) | 이번 실습 잔존 리소스 0개 확인 |
+| IAM 권한·설정 | [iam/README.md](iam/README.md), [정책](iam/mission-policy.json) | 전용 IAM 사용자·제한 정책 적용 완료 |
 
 ## 실행
 
@@ -94,7 +101,8 @@ IGW 경로만 있거나 Public IP만 있는 것으로는 외부 접근이 성립
 ## 검증 범위
 
 로컬 검증 명령: `python -m unittest discover -s tests -v`.
-입력 안전장치, 잘못된 HTTP 응답 거부, 보안 그룹 검증, 정리 범위 및 중복 삭제 처리를 확인합니다.
+총 11개 테스트가 통과했습니다. 입력 안전장치, 잘못된 HTTP 응답 거부, 보안 그룹 검증, 정리 범위,
+중복 삭제 및 AWS waiter 조회 권한 누락 방지를 확인합니다.
 이 검증은 실제 AWS 실행을 대체하지 않습니다.
 
 실제 실행에서 생성되는 파일은 `docs/evidence/verification.json`, `external-health.png`,
@@ -106,3 +114,17 @@ IGW 경로만 있거나 Public IP만 있는 것으로는 외부 접근이 성립
 - [AWS EC2 프리 티어: 계정 생성 시점별 차이](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-free-tier-usage.html)
 - [EC2 IAM 정책 예시와 리소스 범위](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
 - [퍼블릭 서브넷과 IGW 라우팅](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+
+## 실제 실행 근거
+
+- [배포 웹사이트 캡처](docs/evidence/external-website.png)
+- [외부 헬스체크 캡처](docs/evidence/external-health.png) 및 [SSH·라우팅·보안 그룹 검증](docs/evidence/verification.json)
+- [실제 장애 재현·복구 로그](docs/evidence/troubleshooting.json)
+- [최종 리소스 삭제·재조회](docs/evidence/cleanup.json)
+- [최초 IAM 상태 조회 권한 누락 사례](docs/evidence/first-attempt-incident.json)와 [첫 실행 정리 결과](docs/evidence/first-attempt-cleanup.json)
+- [실습 IAM 정책 적용 기록](docs/evidence/iam-setup.json)
+
+계정의 최초 IAM 사용자를 만들기 위한 준비에만 기존 루트 임시 인증을 사용했습니다.
+실제 VPC·EC2 생성, SSH·HTTP 검증, 장애 재현 및 리소스 삭제는 전용 IAM 사용자로 수행했습니다.
+루트로 실습 인프라를 운영하지 않았으며, 서버에 AWS 자격 증명을 넣지 않았습니다.
+검증 URL은 증빙 수집 뒤 인스턴스를 종료했으므로 현재는 접속되지 않습니다.

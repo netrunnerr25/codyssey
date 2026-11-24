@@ -51,6 +51,17 @@ class HealthTests(unittest.TestCase):
 
 
 class SafetyTests(unittest.TestCase):
+    def test_policy_covers_ec2_waiter_read_operations(self):
+        from botocore.session import get_session
+        root = Path(__file__).resolve().parents[1]
+        policy = json.loads((root / 'iam/mission-policy.json').read_text())
+        allowed = {action for statement in policy['Statement'] if statement['Effect'] == 'Allow'
+                   for action in ([statement['Action']] if isinstance(statement['Action'], str) else statement['Action'])}
+        model = get_session().get_waiter_model('ec2')
+        for name in ['VpcAvailable', 'InstanceRunning', 'InstanceStatusOk', 'InstanceTerminated', 'VolumeDeleted']:
+            with self.subTest(waiter=name):
+                self.assertIn('ec2:' + model.get_waiter(name).operation, allowed)
+
     def test_refuse_root_credentials(self):
         with patch('boto3.Session') as session:
             session.return_value.client.return_value.get_caller_identity.return_value = {'Arn': 'arn:aws:iam::123:root'}
