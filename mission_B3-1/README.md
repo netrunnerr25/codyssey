@@ -2,7 +2,6 @@
 
 AWS 서울 리전(ap-northeast-2)에 독립 VPC, Public Subnet, Internet Gateway,
 Route Table, Security Group, EC2 한 대를 구성하고 기존 `mission_B1-1` 웹사이트를 Nginx로 배포합니다.
-보너스 과제인 HTTPS·Docker는 포함하지 않습니다.
 
 **현재 상태: 실제 AWS 배포·외부 접속·장애 복구·실습 리소스 삭제 확인 완료.**
 서울 리전에서 전용 IAM 사용자 `mission-b3`로 실행했습니다. 기존 계정은 유료 플랜으로 전환했으며,
